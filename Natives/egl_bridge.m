@@ -57,9 +57,10 @@ int pojavInitOpenGL() {
         setenv("POJAVPATCH_RENDERER", renderer.UTF8String, 1);
         set_gl_bridge_tbl();
     } else if ([renderer isEqualToString:@ RENDERER_NAME_MTL_ANGLE]) {
+        renderer = @RENDERER_NAME_MTL_ANGLE;
         set_gl_bridge_tbl();
     } else if ([renderer isEqualToString:@ RENDERER_NAME_MOBILEGLUES]) {
-        renderer = @RENDERER_NAME_MOBILEGLUES;
+        //renderer = @RENDERER_NAME_MOBILEGLUES;
         set_gl_bridge_tbl();
     } else if ([renderer hasPrefix:@"libOSMesa"]) {
         setenv("GALLIUM_DRIVER","zink",1);
@@ -85,8 +86,8 @@ void pojavSetWindowHint(int hint, int value) {
                 break;
             // case 4: use Zink?
             default:
-                setenv("POJAVPATCH_RENDERER", RENDERER_NAME_MTL_ANGLE, 1);
-                JNI_LWJGL_changeRenderer(RENDERER_NAME_MTL_ANGLE);
+                setenv("POJAVPATCH_RENDERER", RENDERER_NAME_MOBILEGLUES, 1);
+                JNI_LWJGL_changeRenderer(RENDERER_NAME_MOBILEGLUES);
                 break;
         }
     }
