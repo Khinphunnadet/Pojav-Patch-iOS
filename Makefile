@@ -65,7 +65,7 @@ PREFIX      ?= /
 endif
 $(warning Building on iOS. Note that all targets may not compile or require external components.)
 endif
-else ifeq ($(DETECTPLAT),Linux)
+ifeq ($(DETECTPLAT),Linux)
 IOS         := 0
 # SDKPATH presence is checked later
 BOOTJDK     ?= /usr/bin
