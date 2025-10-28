@@ -39,7 +39,7 @@ However, we recommend one of the following devices on **iOS 14.0** and later:
 Recommended devices provide a smoother and more enjoyable gameplay experience compared to other supported devices.
 - ~~tvOS support is in development~~ tvOS are disable in this repository.
 - iOS 17.x and iOS 18.x is supported. However, a computer is required. These methods will ultilized usage of pymobiledevice3. Python 3.11.(x) must be properly set up on your computer. For more information, please check out the official Wiki: https://pojavlauncherteam.github.io/JIT.html#what-are-the-methods-to-enable-jit
-- iOS 26 is not supported due to a JIT issue in this version of iOS.
+- iOS 26 currently supported but it's development build in [Actions tab](https://github.com/congcq/Pojav-Patch-iOS/actions)
 
 ### Setting up to sideload
 Pojav Patch can be sideloaded in many ways. Our recommended solution is to install [TrollStore](https://github.com/opa334/TrollStore) if your iOS version supports it. Installing with TrollStore allows you to permenantly sign the application, automatically enable JIT, and increase memory limits.
@@ -57,9 +57,9 @@ If you cannot, [AltStore](https://altstore.io) and [SideStore](https://sidestore
 1. Download an IPA of Pojav Patch in [Releases](https://github.com/congcq/Pojav-Patch-iOS/releases).
 2. Open the package in TrollStore using the share menu.
 
-#### Nightly builds
+#### DEvelopment builds
 *These builds can contain game-breaking bugs. Use with caution.*
-1. Download an IPA build of Pojav Patch in the [Actions tab](https://github.com/congcq/Pojav-Patch-iOS/actions).
+1. Download an IPA build of Pojav Patch in the [Actions tab][def].
 2. Open the downloaded IPA in your sideloading app to install.
 
 ### Enabling JIT
@@ -72,14 +72,11 @@ Pojav Patch makes use of **just-in-time compilation**, or JIT, to provide usable
 
 (*) AltServer running on the local network is required.
 
+### Enabling Increased Memory Limit
+In order for Pojav Patch to run even smoother, it's recommended to increase the RAM limit by enabling "Increased Memory Limit." You can enable it by installing [GetMoreRam](https://github.com/hugeBlack/GetMoreRam/releases/download/nightly/Entitlement.ipa) app with your favourite sideloading service. You will need to sign in with the Apple ID you used in AltStore/SideStore and tap "Refresh" in the App-IDs tab. Choose the App-ID of Pojav Patch (or LiveContainer if you're using Pojav Patch in it) and press "Add Increased Memory Limit." After reinstalling Pojav Patch (or LiveContainer), you can see in the logs, or with tools like [Antrag](https://apps.apple.com/app/antrag/id6747074491), if Increased Memory Limit has been enabled successfully. If not, try again.
+
 ## Contributors
 Pojav Patch is amazing, and surprisingly stable, and it wouldn't be this way without the commmunity that helped and contribute to the project! Some notable names:
-
-**In this repository (Pojav-Patch-iOS)**:
-
-@congcq (CongChu)
-
-**In PojavLauncher iOS repository**:
 
 @khanhduytran0 - Lead iOS port developer  
 @crystall1nedev - Lead iOS port developer  
@@ -87,7 +84,8 @@ Pojav Patch is amazing, and surprisingly stable, and it wouldn't be this way wit
 @Mathius-Boulay  
 @zhuowei  
 @jkcoxson   
-@Diatrus 
+@Diatrus  
+@congcq  
 
 ## Third party components and their licenses
 - [Caciocavallo](https://github.com/PojavLauncherTeam/caciocavallo): [GNU GPLv2 License](https://github.com/PojavLauncherTeam/caciocavallo/blob/master/LICENSE).
@@ -111,3 +109,6 @@ Pojav Patch is amazing, and surprisingly stable, and it wouldn't be this way wit
 - Thanks to [MCHeads](https://mc-heads.net) for providing Minecraft avatars.
 
 <!-- sillysock was here -->
+
+
+[def]: https://github.com/congcq/Pojav-Patch-iOS/actions
