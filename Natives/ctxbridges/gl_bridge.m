@@ -24,6 +24,7 @@ void dlsym_EGL() {
     handle.eglGetDisplay = dlsym(dl_handle, "eglGetDisplay");
     handle.eglGetError = dlsym(dl_handle, "eglGetError");
     handle.eglGetPlatformDisplay = dlsym(dl_handle, "eglGetPlatformDisplay");
+    handle.eglQueryString = dlsym(dl_handle, "eglQueryString");
     handle.eglInitialize = dlsym(dl_handle, "eglInitialize");
     handle.eglMakeCurrent = dlsym(dl_handle, "eglMakeCurrent");
     handle.eglSwapBuffers = dlsym(dl_handle, "eglSwapBuffers");
