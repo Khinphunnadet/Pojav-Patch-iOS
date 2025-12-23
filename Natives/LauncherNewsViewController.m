@@ -2,6 +2,7 @@
 #import "LauncherMenuViewController.h"
 #import "LauncherNewsViewController.h"
 #import "LauncherPreferences.h"
+#import "config.h"
 #import "utils.h"
 
 @interface LauncherNewsViewController()<WKNavigationDelegate>
@@ -45,6 +46,12 @@ UIEdgeInsets insets;
     [webView loadRequest:request];
     [self.view addSubview:webView];
 
+    UIAlertController *welcome = [UIAlertController alertControllerWithTitle:@"Pojav Patch" message:[NSString stringWithFormat:@"%@: %@-%s\nPID: %d\nBy CongChu (congcq)", NSLocalizedString(@"welcome.version", nil), NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"], CONFIG_TYPE, getpid()] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *closeButton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [welcome addAction:closeButton];
+    [self presentViewController:welcome animated:YES completion:nil];
+    
     if(!isJailbroken && getPrefBool(@"warnings.limited_ram_warn") && (roundf(NSProcessInfo.processInfo.physicalMemory / 0x1000000) < 3900)) {
         // "This device has a limited amount of memory available."
         [self showWarningAlert:@"limited_ram" hasPreference:YES];

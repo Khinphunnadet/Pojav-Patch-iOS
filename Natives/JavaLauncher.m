@@ -112,7 +112,7 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
     if ([NSFileManager.defaultManager fileExistsAtPath:[NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:@"LSAppInfo.plist"]]) {
         NSDebugLog(@"[JavaLauncher] Running in LiveContainer, skipping dyld patch");
     } else {
-        if (@available(iOS 26.0, *) || jit26AlwaysAttached) {
+        if (@available(iOS 26.0, *) || !jit26AlwaysAttached) {
             // Disable Library Validtion bypass for iOS 26 because of stricter JIT
         } else {
             // Activate Library Validation bypass for external runtime and dylibs (JNA, etc)
@@ -172,9 +172,13 @@ int launchJVM(NSString *username, id launchTarget, int width, int height, int mi
         NSString *dest = [NSString stringWithFormat:@"%@/lib/libawt_xawt.dylib", javaHome];
         NSString *source = [NSString stringWithFormat:@"%@/Frameworks/libawt_xawt.dylib", NSBundle.mainBundle.bundlePath];
         NSError *error;
-        [fm createSymbolicLinkAtPath:dest withDestinationPath:source error:&error];
-        if (error) {
-            NSLog(@"[JavaLauncher] Symlink libawt_xawt.dylib failed: %@", error.localizedDescription);
+        if (![fm fileExistsAtPath:dest]) {
+            [fm createSymbolicLinkAtPath:dest withDestinationPath:source error:&error];
+            if (!error) {
+                NSLog(@"[JavaLauncher] Symlink libawt_xawt.dylib successfully!");
+            } else {
+                NSLog(@"[JavaLauncher] Symlink libawt_xawt.dylib failed: %@", error.localizedDescription);
+            }
         }
     }
 
